@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios";
 import { Header } from "../../components/Header/Header";
 import { Search } from "../../components/Search/Search";
@@ -15,6 +15,7 @@ export const Home: React.FC = () => {
     const dispatch = useDispatch();
     const { value } = useSelector((state: RootState) => state.value);
     const { region } = useSelector((state: RootState) => state.region);
+    const [loadMore, setLoadMore] = useState(8);
 
     const fetchCountries = async () => {
         const response = await axios.get(`https://restcountries.com/v3.1/${value !== '' ? 'name/' + value : 'all'}?fields=name,capital,currencies,flags,region,population,nativeName,borders,subregion,tld,languages`);
@@ -32,7 +33,7 @@ export const Home: React.FC = () => {
         document.title = 'Home';
         if (data) {
             const searchedCountries = data.filter((country: any) => country.name.common.toLowerCase().includes(value.toLowerCase()));
-            dispatch(setData(region ? searchedCountries : data));
+            dispatch(setData(region ? searchedCountries : data.slice(0, loadMore)));
         }
         dispatch(setLoading(isLoading));
         if (error) {
@@ -40,13 +41,13 @@ export const Home: React.FC = () => {
         } else {
             dispatch(setError(''));
         }
-    }, [data, isLoading, error, dispatch, region]);
+    }, [data, isLoading, error, dispatch, region, value, loadMore]);
 
     return (
         <>
             <Header />
             <Search />
-            {error ? <NotFound /> : <CardList />}
+            {error ? <NotFound /> : <CardList loadMore={loadMore} setLoadMore={setLoadMore} />}
         </>
     );
 };

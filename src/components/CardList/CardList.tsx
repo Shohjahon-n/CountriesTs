@@ -4,7 +4,13 @@ import { RootState } from '../../app/store';
 import { CardListItem } from '../CardListItem/CardListItem';
 import { CardListItemSkeleton } from '../CardListItemSkeleton/Card.ListItemSkeleton';
 
-export const CardList: React.FC = () => {
+interface ICardListProps {
+    loadMore: number
+    setLoadMore(value: number): void
+}
+
+
+export const CardList: React.FC<ICardListProps> = ({ loadMore, setLoadMore }) => {
     const isLoading = useSelector((state: RootState) => state.loading.isLoading);
     const data = useSelector((state: RootState) => state.data.data);
 
@@ -62,6 +68,8 @@ export const CardList: React.FC = () => {
                     )
                 })}
             </div>
+            <button onClick={() => { setLoadMore(loadMore + 8) }} className="m-auto flex mt-10 bg-blue-500 hover:bg-blue-700
+             text-white font-bold py-2 px-4 rounded-full">Load More</button>
         </main>
     );
 };
