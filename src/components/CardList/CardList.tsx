@@ -27,7 +27,7 @@ export const CardList: React.FC<ICardListProps> = ({ loadMore, setLoadMore }) =>
     }
 
     return (
-        <main className="container h-screen m-auto mt-8 md:mt-0">
+        <main className="container h-screen m-auto mt-8 md:mt-0 px-2">
             <div className="w-full flex flex-wrap items-center sm:justify-between gap-y-24 gap-x-14 justify-center">
                 {data?.map((country: any, index: number) => {
                     const { flags, name, capital, region, population, subregion,

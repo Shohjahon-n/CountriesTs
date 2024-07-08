@@ -9,7 +9,7 @@ export const Header = () => {
     }
     return (
         <header className="header w-full h-20 bg-secondary flex shadow-inner shadow-[#0000000E]">
-            <div className="header_content container m-auto flex justify-between items-center">
+            <div className="header_content container m-auto flex justify-between items-center px-2">
                 <div className="header_text">
                     <h2 className="cursor-pointer text-textColor text-sm  md:text-2xl font-extrabold">Where in the world?</h2>
                 </div>

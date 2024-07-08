@@ -24,6 +24,7 @@ export const Home: React.FC = () => {
 
     const fetchCountriesByRegion = async () => {
         const response = await axios.get(`https://restcountries.com/v3.1/region/${region}`);
+        setLoadMore(8);
         return response.data;
     };
 
@@ -44,10 +45,10 @@ export const Home: React.FC = () => {
     }, [data, isLoading, error, dispatch, region, value, loadMore]);
 
     return (
-        <>
+        < >
             <Header />
             <Search />
             {error ? <NotFound /> : <CardList loadMore={loadMore} setLoadMore={setLoadMore} />}
-        </>
+        </ >
     );
 };

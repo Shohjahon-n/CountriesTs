@@ -75,7 +75,7 @@ export const ModalComponent: React.FC<IModalProps> = ({
                                     Subregion: <span className="text-textPrimary">{subregion}</span>
                                 </p>
                             )}
-                            {capital && (
+                            {capital.length > 0 && (
                                 <p className="text-sm md:text-base font-semibold mb-5">
                                     Capital: <span className="text-textPrimary">{capital}</span>
                                 </p>

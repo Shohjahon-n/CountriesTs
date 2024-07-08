@@ -46,7 +46,7 @@ export const CardListItem: React.FC<ICardListItemProps> = ({
                     <h2 className="text-lg font-extrabold">{name}</h2>
                     {population && <p className="text-sm font-semibold">Population: <span className="text-textPrimary">{population.toLocaleString('en-US')}</span></p>}
                     {region && <p className="text-sm font-semibold">Region: <span className="text-textPrimary">{region}</span></p>}
-                    {capital && <p className="text-sm font-semibold">Capital: <span className="text-textPrimary">{capital}</span></p>}
+                    {capital.length > 0 && <p className="text-sm font-semibold">Capital: <span className="text-textPrimary">{capital}</span></p>}
                 </div>
             </div>
         </>
