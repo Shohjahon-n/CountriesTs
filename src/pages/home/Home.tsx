@@ -33,7 +33,7 @@ export const Home: React.FC = () => {
         document.title = 'Home';
         if (data) {
             const searchedCountries = data.filter((country: any) => country.name.common.toLowerCase().includes(value.toLowerCase()));
-            dispatch(setData(region ? searchedCountries : data.slice(0, loadMore)));
+            dispatch(setData(region ? searchedCountries.slice(0, loadMore) : data.slice(0, loadMore)));
         }
         dispatch(setLoading(isLoading));
         if (error) {
