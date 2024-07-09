@@ -75,13 +75,13 @@ export const ModalComponent: React.FC<IModalProps> = ({
                                     Subregion: <span className="text-textPrimary">{subregion}</span>
                                 </p>
                             )}
-                            {capital.length > 0 && (
+                            {capital && capital.length > 0 && (
                                 <p className="text-sm md:text-base font-semibold mb-5">
                                     Capital: <span className="text-textPrimary">{capital}</span>
                                 </p>
                             )}
                             <div className="bordercountries flex flex-wrap gap-2">
-                                {borders.length > 0 && (
+                                {borders && borders.length > 0 && (
                                     <p className="w-full h-full flex flex-wrap gap-2 text-sm md:text-base font-semibold">
                                         Borders: {borders.map((border, index) => (
                                             <span
